@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Let's Play - Number Game!!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" src="partyPopper.css">
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Let's Play - Number Game!!</h1>
+  <p>Choose a number between 1 to 1000!</p> 
+</div>
+  
+
+ <div class="form-number">
+      <h3>Let's Play... ( 2 Players )</h3>
+
+      <br>
+      <br>
+      
+      
+      <form id="bet">
+       <h4> Player 1 </h4>
+          <div class="form-group">  
+              <label for="Name">Name :</label>
+                <input type="name" class="form-control" id="name" placeholder="" name="pname">
+         </div>
+         <div class="form-group">
+              <label for="Guess">Guess Number :</label>
+                <input type="number" class="form-control" id="number" min="1" max="1000" name="guess">
+         </div>
+
+          <h4> Player 2 </h4>
+
+          <div class="form-group">  
+              <label for="Name">Name :</label>
+                <input type="name" class="form-control" id="name" placeholder="" name="pname2">
+         </div>
+         <div class="form-group">
+              <label for="Guess">Guess Number :</label>
+                <input type="number" class="form-control" id="number" min="1" max="1000" name="guess2">
+         </div>
+
+         <div class="form-group">
+            <button type="submit" class="form-control">Submit</button>
+        </div>
+
+        <br>
+
+        <br>
+
+        </form> 
+
+         <div class="party-popper">
+              <label for="winner">Winner :</label>
+                <input type="winner" class="form-control" id="winner" name="winner">
+                  
+                     <div class="party-popper__emoji">🎉</div>
+                    
+         </div>
+         <br>
+         <br>
+         <br>
+
+
+</div>
+</body>
+
+  <script src="game.js"></script>
+  <script src="partyPopper.js"></script>
+  <script src='http://cdn.jsdelivr.net/mojs/latest/mo.min.js'></script>
+  <script src='http://cdn.jsdelivr.net/mojs-player/latest/mojs-player.min.js'></script>
+
+  
+  <script>
+  $('#bet').on('submit', function(e){
+       e.preventDefault(e);
+       let value = $('input[name=guess]').val();
+       let name = $('input[name=pname]').val();
+
+       let value1 = $('input[name=guess2]').val();
+       let name1 = $('input[name=pname2]').val();
+
+       console.log(name +"'s guess is : "+ value);
+       console.log(name1 +"'s guess is : "+ value1);
+       addBet({name:name, value:value});
+       addBet({name:name1, value:value1});
+       
+       document.getElementById('winner').value = getWinner().name;
+
+       partyPopper('.party-popper', true);
+
+  })
+  </script>
+
+</html>
